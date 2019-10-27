@@ -14,9 +14,15 @@
 	"categories": [
 		"Other"
 	],
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/laggery/vscode-fhir-tools.git"
+	},
 	"activationEvents": [
 		"onCommand:extension.xmlToJson",
-		"onCommand:extension.jsonToXml"
+		"onCommand:extension.jsonToXml",
+		"onCommand:extension.validateResource"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -28,6 +34,10 @@
 			{
 				"command": "extension.jsonToXml",
 				"title": "Fhir json to xml"
+			},
+			{
+				"command": "extension.validateResource",
+				"title": "Fhir validate resource"
 			}
 		],
 		"menus": {
@@ -40,6 +50,11 @@
 				{
 					"when": "resourceLangId == json",
 					"command": "extension.jsonToXml",
+					"group": "Fhir"
+				},
+				{
+					"when": "resourceLangId == json || resourceLangId == xml",
+					"command": "extension.validateResource",
 					"group": "Fhir"
 				}
 			]
