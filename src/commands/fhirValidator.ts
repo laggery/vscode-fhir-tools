@@ -34,10 +34,11 @@ const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
             const request = https.get("https://fhir.github.io/latest-ig-publisher/org.hl7.fhir.validator.jar", function (response) {
                 response.pipe(file)
                 .on('finish', () => {
-                    console.log(`The file is finished downloading.`);
+                    vscode.window.showInformationMessage('Fhir validator jar downloaded successful!');
                     resolve(true);
                 })
                 .on('error', (error) => {
+                    vscode.window.showErrorMessage('Fhir validator jar could not be downloaded!');
                     reject(false);
                 });
                 
