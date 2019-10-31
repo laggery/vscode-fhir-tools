@@ -22,7 +22,8 @@
 	"activationEvents": [
 		"onCommand:extension.xmlToJson",
 		"onCommand:extension.jsonToXml",
-		"onCommand:extension.validateResource"
+		"onCommand:extension.validateResource",
+		"onCommand:extension.fhirpathWebview"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -38,6 +39,10 @@
 			{
 				"command": "extension.validateResource",
 				"title": "Fhir validate resource"
+			},
+			{
+				"command": "extension.fhirpathWebview",
+				"title": "Fhir open fhirpath"
 			}
 		],
 		"menus": {
@@ -56,6 +61,11 @@
 					"when": "resourceLangId == json || resourceLangId == xml",
 					"command": "extension.validateResource",
 					"group": "Fhir"
+				},
+				{
+					"when": "resourceLangId == json || resourceLangId == xml",
+					"command": "extension.fhirpathWebview",
+					"group": "Fhir"
 				}
 			]
 		}
@@ -70,15 +80,16 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
+		"@types/node": "^10.17.2",
 		"@types/vscode": "^1.39.0",
 		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"tslint": "^5.12.1",
-		"vscode-test": "^1.2.0"
+		"mocha": "^6.2.2",
+		"tslint": "^5.20.0",
+		"typescript": "^3.6.4",
+		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.7.0"
+		"fhir": "^4.7.0",
+		"fhirpath": "^0.17.4"
 	}
 }

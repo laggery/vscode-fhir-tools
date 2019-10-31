@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fhirpath</title>
+</head>
+
+<body>
+    <label>Fhirpath expression: </label>
+    <input id="path" type="text" />
+    <pre id="result"></pre>
+</body>
+
+</html>
+<script>
+    (function () {
+        const vscode = acquireVsCodeApi();
+        window.addEventListener('message', event => {
+            const message = event.data; // The JSON data our extension sent
+            document.getElementById("result").textContent = message.value;
+        });
+
+        document.getElementById('path').oninput = function (eve) {
+            vscode.postMessage({
+                command: 'path',
+                value: this.value
+            })
+        }
+    }())
+
+</script>
