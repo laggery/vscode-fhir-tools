@@ -90,6 +90,7 @@
 	},
 	"dependencies": {
 		"fhir": "^4.7.0",
-		"fhirpath": "^0.17.4"
+		"fhirpath": "^0.17.4",
+		"grunt": "^1.0.4"
 	}
 }

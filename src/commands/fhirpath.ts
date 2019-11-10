@@ -27,11 +27,12 @@ const fhirpathWebview = (context: vscode.ExtensionContext): vscode.Disposable =>
                 'Fhirpath',
                 vscode.ViewColumn.Beside,
                 {
-                    enableScripts: true
+                    enableScripts: true,
+                    localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))]
                 }
             );
 
-            const filePath: vscode.Uri = vscode.Uri.file(path.join(context.extensionPath, 'src', 'web', 'fhirpath', 'index.html'));
+            const filePath: vscode.Uri = vscode.Uri.file(path.join(context.extensionPath, 'media', 'web', 'fhirpath', 'index.html'));
             panel.webview.html = fs.readFileSync(filePath.fsPath, 'utf8');
             if (textEditor.document.languageId === "json") {
                 content = JSON.parse(textEditor.document.getText());
