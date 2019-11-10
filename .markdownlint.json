@@ -1,0 +1,6 @@
+{
+    "no-inline-html": {
+      "allowed_elements": [ "img", "p" ]
+    },
+    "line-length": false
+  }

@@ -5,11 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fhirpath</title>
+    <style>
+        #path {
+            background-color: transparent;
+            border: none;
+            font-size: 14px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        #path:focus {
+            outline: none;
+        }
+
+        body.vscode-dark #path {
+            border-bottom: 1px solid white;
+            color: white;
+        }
+
+        body.vscode-light #path {
+            border-bottom: 1px solid black;
+            color: black;
+        }
+        
+        body.vscode-hight-contrast #path {
+            border-bottom: 1px solid red;
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-    <label>Fhirpath expression: </label>
-    <input id="path" type="text" />
+    <input id="path" type="text" placeholder="Fhirpath expression" />
     <pre id="result"></pre>
 </body>
 
