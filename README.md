@@ -1,6 +1,6 @@
 # vscode-fhir-tools
 
-Fhir tools is an open-source extension for [Visual Studio Code](https://code.visualstudio.com) created by Yannick Lagger.
+Vscode-fhir-tools is an open-source extension for [Visual Studio Code](https://code.visualstudio.com) that implement some tools for the FHIR standard created by Yannick Lagger. This project is not affiliated with, or approved or sponsored by, HL7.
 
 See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master/CHANGELOG.md 'Open Release Notes') for the full set of changes
 
