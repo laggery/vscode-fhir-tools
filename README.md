@@ -9,7 +9,7 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 ### Convert XML fhir resource to JSON
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/xml-to-json.jpg?token=AATRZX7XRUMZAZCEZEW2PYK5ZFNRS"
+  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/xml-to-json.jpg"
   alt="Convert XML fhir resource to JSON" />
 </p>
 
@@ -19,7 +19,7 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 ### Convert JSON fhir resource to XML
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/json-to-xml.jpg?token=AATRZX3U4SA2LKOVZBADGZK5ZFNME"
+  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/json-to-xml.jpg"
   alt="Convert JSON fhir resource to XML" />
 </p>
 
@@ -29,7 +29,7 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 ### Validate fhir resource (XML or JSON)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/validate-resource.jpg?token=AATRZX3DLSLQOMPSW5EW34S5ZFNS6"
+  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/validate-resource.jpg"
   alt="Validate fhir resource" />
 </p>
 
@@ -39,7 +39,7 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 ### Fhirpath search on resource
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/fhirpath.jpg?token=AATRZX7OTN356N437OS2TXS5ZFNLU"
+  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/fhirpath.jpg"
   alt="Fhirpath tool" />
 </p>
 
