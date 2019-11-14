@@ -1,6 +1,6 @@
 {
 	"name": "vscode-fhir-tools",
-	"displayName": "vscode-fhir-tools",
+	"displayName": "FHIR tools",
 	"description": "",
 	"version": "0.0.1",
 	"publisher": "Yannick-Lagger",
