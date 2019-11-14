@@ -6,35 +6,35 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 
 ## Features
 
-### Convert XML fhir resource to JSON
+### Convert XML FHIR resource to JSON
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/xml-to-json.jpg"
-  alt="Convert XML fhir resource to JSON" />
+  alt="Convert XML FHIR resource to JSON" />
 </p>
 
 - Right click on xml resource
-- Select "Fhir xml to json
+- Select "FHIR xml to json
 
-### Convert JSON fhir resource to XML
+### Convert JSON FHIR resource to XML
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/json-to-xml.jpg"
-  alt="Convert JSON fhir resource to XML" />
+  alt="Convert JSON FHIR resource to XML" />
 </p>
 
 - Right click on json resource
-- Select "Fhir json to xml
+- Select "FHIR json to xml
 
-### Validate fhir resource (XML or JSON)
+### Validate FHIR resource (XML or JSON)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/validate-resource.jpg"
-  alt="Validate fhir resource" />
+  alt="Validate FHIR resource" />
 </p>
 
 - Right click on json or xml resource
-- Select "Fhir validate resource - The terminal will launch and validate the resource
+- Select "FHIR validate resource - The terminal will launch and validate the resource
 
 ### Fhirpath search on resource
 
@@ -49,7 +49,7 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 
 ## Requirements
 
-The resource validation use the official [fhir validator](https://wiki.hl7.org/Using_the_FHIR_Validator 'Open hl7 wiki'). For this reason you must have JAVA jre installed and in your path.
+The resource validation use the official [FHIR validator](https://wiki.hl7.org/Using_the_FHIR_Validator 'Open hl7 wiki'). For this reason you must have JAVA jre installed and in your path.
 
 ## Known Issues
 
@@ -59,7 +59,7 @@ If you find some issues please create an issue on github
 ## Licence
 
 Copyright (C) Yannick Lagger, Switzerland.
-Fhir-tools is released under the [GPL3 License](https://opensource.org/licenses/GPL-3.0)
+Fhir-tools is released under the [Apache-2.0](https://opensource.org/licenses/Apache-2.0)
 
 ## Other used open source project
 

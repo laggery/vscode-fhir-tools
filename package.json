@@ -30,19 +30,19 @@
 		"commands": [
 			{
 				"command": "extension.xmlToJson",
-				"title": "Fhir xml to json"
+				"title": "FHIR xml to json"
 			},
 			{
 				"command": "extension.jsonToXml",
-				"title": "Fhir json to xml"
+				"title": "FHIR json to xml"
 			},
 			{
 				"command": "extension.validateResource",
-				"title": "Fhir validate resource"
+				"title": "FHIR validate resource"
 			},
 			{
 				"command": "extension.fhirpathWebview",
-				"title": "Fhir open fhirpath"
+				"title": "FHIR open fhirpath"
 			}
 		],
 		"menus": {
@@ -50,22 +50,22 @@
 				{
 					"when": "resourceLangId == xml",
 					"command": "extension.xmlToJson",
-					"group": "Fhir"
+					"group": "FHIR"
 				},
 				{
 					"when": "resourceLangId == json",
 					"command": "extension.jsonToXml",
-					"group": "Fhir"
+					"group": "FHIR"
 				},
 				{
 					"when": "resourceLangId == json || resourceLangId == xml",
 					"command": "extension.validateResource",
-					"group": "Fhir"
+					"group": "FHIR"
 				},
 				{
 					"when": "resourceLangId == json || resourceLangId == xml",
 					"command": "extension.fhirpathWebview",
-					"group": "Fhir"
+					"group": "FHIR"
 				}
 			]
 		}
