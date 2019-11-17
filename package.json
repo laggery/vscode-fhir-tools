@@ -2,11 +2,12 @@
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
 	"description": "",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"publisher": "Yannick-Lagger",
 	"author": {
 		"name": "Yannick Lagger",
-		"email": "lagger.yannick@gmail.com"
+		"email": "lagger.yannick@gmail.com",
+		"url": "https://github.com/laggery"
 	},
 	"engines": {
 		"vscode": "^1.39.0"
