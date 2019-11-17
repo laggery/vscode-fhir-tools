@@ -4,6 +4,6 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-## [1.0.0] - 2019-12-01
+## [1.0.1] - 2019-11-17
 
 - Initial release
