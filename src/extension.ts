@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
 import { xmlToJsonCmd, jsonToXmlCmd } from './commands/fhirConverter';
-import { validateResource } from './commands/fhirValidator';
+import { validateResource, validateResourceWithParams } from './commands/fhirValidator';
 import { fhirpathWebview } from './commands/fhirpath';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(xmlToJsonCmd(context));
 	context.subscriptions.push(jsonToXmlCmd(context));
 	context.subscriptions.push(validateResource(context));
+	context.subscriptions.push(validateResourceWithParams(context));
 	context.subscriptions.push(fhirpathWebview(context));
 }
 

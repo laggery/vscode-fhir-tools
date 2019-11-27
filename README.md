@@ -36,7 +36,19 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 </p>
 
 - Right click on json or xml resource
-- Select "FHIR validate resource - The terminal will launch and validate the resource
+- Select "FHIR validate resource" - The terminal will launch and validate the resource
+
+### Validate FHIR resource with multiple paramaters
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/validate-resource-params.png"
+  alt="Validate FHIR resource with params" />
+</p>
+
+- Right click on json or xml resource
+- Select "FHIR validate resource (with params)"
+- Set parameters to the inputbox
+- The terminal will launch and validate the resource
 
 ### Fhirpath search on resource
 

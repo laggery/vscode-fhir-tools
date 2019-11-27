@@ -20,6 +20,32 @@ const validateResource = (context: vscode.ExtensionContext): vscode.Disposable =
     });
 };
 
+const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Disposable => {
+    return vscode.commands.registerCommand('extension.validateResourceWithParams', () => {
+        let textEditor = vscode.window.activeTextEditor;
+        if (textEditor) {
+            if (textEditor.document.languageId !== "json" && textEditor.document.languageId !== "xml") {
+                vscode.window.showErrorMessage('Current tab is not a json or an xml file');
+                return;
+            }
+            
+            downloadJar(context).then(async resp => {
+                let optionsInput = await vscode.window.showInputBox({
+                    placeHolder: "Enter the JAR options",
+                    prompt: "Example: -version 3.0 -ig http://hl7.org/fhir/us/core"
+                });
+
+                if (!optionsInput) {
+                    optionsInput = "-version 4.0.0";
+                }
+                const terminal = vscode.window.createTerminal(`Resource validation`);
+                terminal.show(true);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} ${optionsInput}`);
+            });
+        }
+    });
+};
+
 const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         if (fs.existsSync(path.join(context.extensionPath, 'org.hl7.fhir.validator.jar'))) {
@@ -51,5 +77,6 @@ const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
 };
 
 export {
-    validateResource
+    validateResource,
+    validateResourceWithParams
 };

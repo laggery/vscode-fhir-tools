@@ -24,6 +24,7 @@
 		"onCommand:extension.xmlToJson",
 		"onCommand:extension.jsonToXml",
 		"onCommand:extension.validateResource",
+		"onCommand:extension.validateResourceWithParams",
 		"onCommand:extension.fhirpathWebview"
 	],
 	"main": "./out/extension.js",
@@ -42,6 +43,10 @@
 				"title": "FHIR validate resource"
 			},
 			{
+				"command": "extension.validateResourceWithParams",
+				"title": "FHIR validate resource (with params)"
+			},
+			{
 				"command": "extension.fhirpathWebview",
 				"title": "FHIR open fhirpath"
 			}
@@ -51,22 +56,27 @@
 				{
 					"when": "resourceLangId == xml",
 					"command": "extension.xmlToJson",
-					"group": "FHIR"
+					"group": "FHIR@1"
 				},
 				{
 					"when": "resourceLangId == json",
 					"command": "extension.jsonToXml",
-					"group": "FHIR"
+					"group": "FHIR@2"
 				},
 				{
 					"when": "resourceLangId == json || resourceLangId == xml",
 					"command": "extension.validateResource",
-					"group": "FHIR"
+					"group": "FHIR@3"
+				},
+				{
+					"when": "resourceLangId == json || resourceLangId == xml",
+					"command": "extension.validateResourceWithParams",
+					"group": "FHIR@4"
 				},
 				{
 					"when": "resourceLangId == json || resourceLangId == xml",
 					"command": "extension.fhirpathWebview",
-					"group": "FHIR"
+					"group": "FHIR@5"
 				}
 			]
 		}
