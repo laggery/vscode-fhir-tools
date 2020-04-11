@@ -32,11 +32,46 @@
             border-bottom: 1px solid red;
             color: red;
         }
+
+        #labelVersion, #version {
+            margin-top: 15px;
+        }
+
+        body.vscode-dark #version option {
+            background-color: #1e1e1e;
+        }
+
+        body.vscode-dark #version  {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid white;
+            color: white;
+            width: 100%;
+            font-size: 14px;
+            background-color: transparent;
+        }
+
+        body.vscode-light #version {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid black;
+            color: black;
+            width: 100%;
+            font-size: 14px;
+            background-color: transparent;
+        }
     </style>
 </head>
 
 <body>
     <input id="path" type="text" placeholder="Fhirpath expression" />
+    <select id="version">
+        <option value="" selected>Choose a model (Optional)</option>
+        <option value="r4">r4</option>
+        <option value="stu3">stu3</option>
+      </select>
     <pre id="result"></pre>
 </body>
 
@@ -52,7 +87,16 @@
         document.getElementById('path').oninput = function (eve) {
             vscode.postMessage({
                 command: 'path',
-                value: this.value
+                value: this.value,
+                version: document.getElementById('version').value
+            })
+        }
+
+        document.getElementById('version').onchange = function (eve) {
+            vscode.postMessage({
+                command: 'path',
+                value: document.getElementById('path').value,
+                version: this.value
             })
         }
     }())

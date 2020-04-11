@@ -94,14 +94,14 @@
 		"@types/node": "^10.17.2",
 		"@types/vscode": "^1.39.0",
 		"glob": "^7.1.4",
-		"grunt": "^1.0.4",
+		"grunt": "^1.1.0",
 		"mocha": "^6.2.2",
 		"tslint": "^5.20.0",
 		"typescript": "^3.6.4",
 		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.7.0",
-		"fhirpath": "^0.17.4"
+		"fhir": "^4.7.2",
+		"fhirpath": "^2.1.0"
 	}
 }
