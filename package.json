@@ -25,7 +25,8 @@
 		"onCommand:extension.jsonToXml",
 		"onCommand:extension.validateResource",
 		"onCommand:extension.validateResourceWithParams",
-		"onCommand:extension.fhirpathWebview"
+		"onCommand:extension.fhirpathWebview",
+		"onCommand:extension.runIGPublisher"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -49,6 +50,10 @@
 			{
 				"command": "extension.fhirpathWebview",
 				"title": "FHIR open fhirpath"
+			},
+			{
+				"command": "extension.runIGPublisher",
+				"title": "FHIR run IGPublisher"
 			}
 		],
 		"menus": {

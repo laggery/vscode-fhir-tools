@@ -3,3 +3,4 @@ node_modules
 .vscode-test/
 *.vsix
 org.hl7.fhir.validator.jar
+org.hl7.fhir.publisher.jar
