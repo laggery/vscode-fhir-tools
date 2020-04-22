@@ -4,6 +4,18 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## [1.2.0] - 2020-04-22
+
+### Added
+
+- New command for run IG Publisher
+- Fhirpath possibility to choose model (Usefull for Observation.valueQuantity.unit)
+
+### Changed
+
+- Updated "fhir" and "fhirpath" library
+- Prevent open multiple terminal when validating resources
+
 ## [1.1.0] - 2019-11-27
 
 ### Added
