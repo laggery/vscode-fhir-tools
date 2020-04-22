@@ -3,6 +3,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
 
+let terminal: vscode.Terminal;
+
 const validateResource = (context: vscode.ExtensionContext): vscode.Disposable => {
     return vscode.commands.registerCommand('extension.validateResource', () => {
         let textEditor = vscode.window.activeTextEditor;
@@ -12,7 +14,9 @@ const validateResource = (context: vscode.ExtensionContext): vscode.Disposable =
                 return;
             }
             downloadJar(context).then(resp => {
-                const terminal = vscode.window.createTerminal(`Resource validation`);
+                if (!terminal) {
+                    terminal = vscode.window.createTerminal(`Resource validation`);
+                }
                 terminal.show(true);
                 terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.1`);
             });
@@ -38,7 +42,9 @@ const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Di
                 if (!optionsInput) {
                     optionsInput = "-version 4.0.1";
                 }
-                const terminal = vscode.window.createTerminal(`Resource validation`);
+                if (!terminal) {
+                    terminal = vscode.window.createTerminal(`Resource validation`);
+                }
                 terminal.show(true);
                 terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} ${optionsInput}`);
             });

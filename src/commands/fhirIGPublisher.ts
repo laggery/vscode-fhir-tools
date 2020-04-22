@@ -3,12 +3,16 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
 
+let terminal: vscode.Terminal;
+
 // https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation
 
 const runIGPublisher = (context: vscode.ExtensionContext): vscode.Disposable => {
     return vscode.commands.registerCommand('extension.runIGPublisher', () => {
         downloadIGPublisher(context).then(resp => {
-            const terminal = vscode.window.createTerminal(`IGPublisher`);
+            if (!terminal) {
+                terminal = vscode.window.createTerminal(`IGPublisher`);
+            }
             terminal.show(true);
             terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.publisher.jar')} -ig ig.ini`);
         });
