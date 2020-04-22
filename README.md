@@ -38,7 +38,14 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 - Right click on json or xml resource
 - Select "FHIR validate resource" - The terminal will launch and validate the resource
 
-### Validate FHIR resource with multiple paramaters
+### Run IGPublisher in terminal
+
+
+- Open the Command Palette (⇧⌘P) 
+- and type "FHIR run IGPublisher" - The terminal will launch and run the [FHIR IG Publisher](https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation) with -ig ig.ini as parameter
+
+
+### Validate FHIR resource with multiple parameters
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/laggery/vscode-fhir-tools/master/docs/images/validate-resource-params.png"
