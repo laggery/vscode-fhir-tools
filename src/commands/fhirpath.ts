@@ -3,6 +3,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { evaluate } from 'fhirpath';
 import * as fhirLib from 'fhir';
+import * as r4 from 'fhirpath/fhir-context/r4';
+import * as stu3 from 'fhirpath/fhir-context/stu3';
 
 let content: string = '';
 
@@ -52,12 +54,20 @@ const sendMessage = (panel: vscode.WebviewPanel, content: string) => {
 
 const receiveMessage = (panel: vscode.WebviewPanel, context: vscode.ExtensionContext) => {
     panel.webview.onDidReceiveMessage(
-        message => {
+        async message => {
             if (message.value === "") {
                 sendMessage(panel, JSON.stringify(content, undefined, 2));
             } else {
                 try {
-                    const result = evaluate(content, message.value, null);
+                    let model = null;
+                    if (message.version === "r4") {
+                        model = r4;
+                    }
+                    if (message.version === "stu3") {
+                        model = stu3;
+                    }
+
+                    const result = evaluate(content, message.value, null, model);
                     sendMessage(panel, JSON.stringify(result, undefined, 2));
                 } catch (exception) {
                     sendMessage(panel, "[]");
