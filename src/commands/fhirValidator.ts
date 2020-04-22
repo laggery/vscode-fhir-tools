@@ -14,7 +14,7 @@ const validateResource = (context: vscode.ExtensionContext): vscode.Disposable =
             downloadJar(context).then(resp => {
                 const terminal = vscode.window.createTerminal(`Resource validation`);
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.0`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.1`);
             });
         }
     });
@@ -36,7 +36,7 @@ const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Di
                 });
 
                 if (!optionsInput) {
-                    optionsInput = "-version 4.0.0";
+                    optionsInput = "-version 4.0.1";
                 }
                 const terminal = vscode.window.createTerminal(`Resource validation`);
                 terminal.show(true);
