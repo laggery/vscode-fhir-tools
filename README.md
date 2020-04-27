@@ -44,6 +44,9 @@ See the [release notes](https://github.com/laggery/vscode-fhir-tools/blob/master
 - Open the Command Palette (⇧⌘P) 
 - and type "FHIR run IGPublisher" - The terminal will launch and run the [FHIR IG Publisher](https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation) with -ig ig.ini as parameter
 
+### update IG Publisher and Validator
+
+The Java validator and IG Publisher are updated frequently. You can update the tooling by opening the Command Palette (⇧⌘P)  and type "FHIR update Java Validator and IGPublisher" 
 
 ### Validate FHIR resource with multiple parameters
 

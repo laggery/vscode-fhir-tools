@@ -2,7 +2,7 @@
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
 	"description": "",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"publisher": "Yannick-Lagger",
 	"author": {
 		"name": "Yannick Lagger",
@@ -26,7 +26,8 @@
 		"onCommand:extension.validateResource",
 		"onCommand:extension.validateResourceWithParams",
 		"onCommand:extension.fhirpathWebview",
-		"onCommand:extension.runIGPublisher"
+		"onCommand:extension.runIGPublisher",
+		"onCommand:extension.runUpdateJavaTooling"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -54,6 +55,10 @@
 			{
 				"command": "extension.runIGPublisher",
 				"title": "FHIR run IGPublisher"
+			},
+			{
+				"command": "extension.runUpdateJavaTooling",
+				"title": "FHIR update Java Validator and IGPublisher"
 			}
 		],
 		"menus": {

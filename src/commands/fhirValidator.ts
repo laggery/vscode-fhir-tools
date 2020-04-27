@@ -84,5 +84,6 @@ const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
 
 export {
     validateResource,
-    validateResourceWithParams
+    validateResourceWithParams,
+    downloadJar
 };

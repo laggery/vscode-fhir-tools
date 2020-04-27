@@ -50,5 +50,5 @@ const downloadIGPublisher = (context: vscode.ExtensionContext): Promise<boolean>
 };
 
 export {
-    runIGPublisher
+    runIGPublisher, downloadIGPublisher
 };
