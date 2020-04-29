@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
+import { constants } from '../constants';
 
 let terminal: vscode.Terminal;
 
@@ -63,7 +64,7 @@ const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
 
         try {
             const file = fs.createWriteStream(path.join(context.extensionPath, 'org.hl7.fhir.validator.jar'));
-            const request = https.get("https://fhir.github.io/latest-ig-publisher/org.hl7.fhir.validator.jar", function (response) {
+            const request = https.get(`${constants.donwloadJarUrl}/org.hl7.fhir.validator.jar`, function (response) {
                 response.pipe(file)
                 .on('finish', () => {
                     vscode.window.showInformationMessage('Fhir validator jar downloaded successful!');

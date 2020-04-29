@@ -4,6 +4,16 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## [1.3.0] - 2020-04-29
+
+### Added
+
+- New command for update IG Publisher and Validator JAR
+
+### Fixed
+
+- Download url  for IG Publisher and Validator JAR changed
+
 ## [1.2.0] - 2020-04-22
 
 ### Added
