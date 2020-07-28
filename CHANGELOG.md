@@ -7,7 +7,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## [1.4.0] - 2020-07-28
 
-- Download url  for IG Publisher and Validator JAR changed to github
+### Fixed
+
+- Download url for IG Publisher and Validator JAR changed to github
 
 ## [1.3.0] - 2020-04-29
 
