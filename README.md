@@ -72,7 +72,7 @@ The Java validator and IG Publisher are updated frequently. You can update the t
 
 ## Requirements
 
-The resource validation use the official [FHIR validator](https://wiki.hl7.org/Using_the_FHIR_Validator 'Open hl7 wiki'). For this reason you must have JAVA jre installed and in your path.
+The resource validation use the official [FHIR validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator 'Open hl7 confluence'). For this reason you must have JAVA jre installed and in your path.
 
 ## Known Issues
 

@@ -15,14 +15,14 @@ const runIGPublisher = (context: vscode.ExtensionContext): vscode.Disposable => 
                 terminal = vscode.window.createTerminal(`IGPublisher`);
             }
             terminal.show(true);
-            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.publisher.jar')} -ig ig.ini`);
+            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'publisher.jar')} -ig ig.ini`);
         });
     });
 };
 
 const downloadIGPublisher = (context: vscode.ExtensionContext): Promise<boolean> => {
     return new Promise((resolve, reject) => {
-        if (fs.existsSync(path.join(context.extensionPath, 'org.hl7.fhir.publisher.jar'))) {
+        if (fs.existsSync(path.join(context.extensionPath, 'publisher.jar'))) {
             resolve(true);
             return;
         }
@@ -30,18 +30,32 @@ const downloadIGPublisher = (context: vscode.ExtensionContext): Promise<boolean>
         vscode.window.showInformationMessage('The first time the IGPublisher must be downloaded. It may take a while!');
 
         try {
-            const file = fs.createWriteStream(path.join(context.extensionPath, 'org.hl7.fhir.publisher.jar'));
-            const request = https.get(`${constants.donwloadJarUrl}/org.hl7.fhir.publisher.jar`, function (response) {
-                response.pipe(file)
-                .on('finish', () => {
-                    vscode.window.showInformationMessage('FHIR IGPublisher: org.hl7.fhir.publisher.jar downloaded successful!');
-                    resolve(true);
-                })
-                .on('error', (error) => {
-                    vscode.window.showErrorMessage('FHIR IGPublisher: org.hl7.fhir.publisher.jar could not be downloaded!');
+            const file = fs.createWriteStream(path.join(context.extensionPath, 'publisher.jar'));
+            https.get(constants.downloadPublisherJarUrl, function (response) {
+                if ((response.statusCode = 302) && (response.headers.location !== undefined)) {
+                    var redirectUrl: string = response.headers.location;
+                    https.get(redirectUrl, function (response2) {
+                        if ((response2.statusCode = 302) && (response2.headers.location !== undefined)) {
+                            var redirectUrl2: string = response2.headers.location;
+                            https.get(redirectUrl2, function (response3) {
+                                response3.pipe(file)
+                                    .on('finish', () => {
+                                        vscode.window.showInformationMessage('FHIR IGPublisher: publisher.jar downloaded successful!');
+                                        resolve(true);
+                                    })
+                                    .on('error', (error) => {
+                                        vscode.window.showErrorMessage('FHIR IGPublisher: publisher.jar could not be downloaded!');
+                                        reject(false);
+                                    });
+                            });
+                        } else {
+                            vscode.window.showErrorMessage('FHIR IGPublisher: Expected 2nd redirect!' + response.statusCode);
+                            reject(false);
+                        }});
+                } else {
+                    vscode.window.showErrorMessage('FHIR IGPublisher: Expected redirect!' + response.statusCode);
                     reject(false);
-                });
-                
+                }
             });
         } catch (exception) {
             reject(false);
