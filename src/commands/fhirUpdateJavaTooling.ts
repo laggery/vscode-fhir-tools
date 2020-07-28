@@ -11,16 +11,16 @@ let terminal: vscode.Terminal;
 const runUpdateJavaTooling = (context: vscode.ExtensionContext): vscode.Disposable => {
     return vscode.commands.registerCommand('extension.runUpdateJavaTooling', () => {
 
-        deleteJar(context, 'org.hl7.fhir.publisher.jar').then(resp => ig.downloadIGPublisher(context)).then(resp => {
+        deleteJar(context, 'publisher.jar').then(resp => ig.downloadIGPublisher(context)).then(resp => {
             if (!terminal) {
                 terminal = vscode.window.createTerminal(`Update Jar`);
             }
             terminal.show(true);
-            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.publisher.jar')} --version`);
+            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'publisher.jar')} --version`);
         }).then(
-            resp => deleteJar(context, 'org.hl7.fhir.validator.jar').then(resp => val.downloadJar(context)).then(resp => {
+            resp => deleteJar(context, 'validator_cli.jar').then(resp2 => val.downloadJar(context)).then(resp3 => {
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')}`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')}`);
             }));
     });
 };
@@ -37,7 +37,7 @@ const deleteJar = (context: vscode.ExtensionContext, file: string): Promise<bool
         }
         resolve(true);
     });
-}
+};
 
 export {
     runUpdateJavaTooling

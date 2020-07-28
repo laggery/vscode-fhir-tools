@@ -19,7 +19,7 @@ const validateResource = (context: vscode.ExtensionContext): vscode.Disposable =
                     terminal = vscode.window.createTerminal(`Resource validation`);
                 }
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.1`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.1`);
             });
         }
     });
@@ -47,7 +47,7 @@ const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Di
                     terminal = vscode.window.createTerminal(`Resource validation`);
                 }
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'org.hl7.fhir.validator.jar')} ${textEditor!.document.uri.fsPath} ${optionsInput}`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} ${textEditor!.document.uri.fsPath} ${optionsInput}`);
             });
         }
     });
@@ -55,7 +55,7 @@ const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Di
 
 const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
     return new Promise((resolve, reject) => {
-        if (fs.existsSync(path.join(context.extensionPath, 'org.hl7.fhir.validator.jar'))) {
+        if (fs.existsSync(path.join(context.extensionPath, 'validator_cli.jar'))) {
             resolve(true);
             return;
         }
@@ -63,18 +63,32 @@ const downloadJar = (context: vscode.ExtensionContext): Promise<boolean> => {
         vscode.window.showInformationMessage('The first time the jar validator must be downloaded. It may take a while!');
 
         try {
-            const file = fs.createWriteStream(path.join(context.extensionPath, 'org.hl7.fhir.validator.jar'));
-            const request = https.get(`${constants.donwloadJarUrl}/org.hl7.fhir.validator.jar`, function (response) {
-                response.pipe(file)
-                .on('finish', () => {
-                    vscode.window.showInformationMessage('Fhir validator jar downloaded successful!');
-                    resolve(true);
-                })
-                .on('error', (error) => {
-                    vscode.window.showErrorMessage('Fhir validator jar could not be downloaded!');
+            const file = fs.createWriteStream(path.join(context.extensionPath, 'validator_cli.jar'));
+            https.get(constants.downloadValidatorJarUrl, function (response) {
+                if ((response.statusCode = 302) && (response.headers.location !== undefined)) {
+                    var redirectUrl: string = response.headers.location;
+                    https.get(redirectUrl, function (response2) {
+                        if ((response2.statusCode = 302) && (response2.headers.location !== undefined)) {
+                            var redirectUrl2: string = response2.headers.location;
+                            https.get(redirectUrl2, function (response3) {
+                                response3.pipe(file)
+                                    .on('finish', () => {
+                                        vscode.window.showInformationMessage('FHIR validator: validator_cli.jar downloaded successful!');
+                                        resolve(true);
+                                    })
+                                    .on('error', (error) => {
+                                        vscode.window.showErrorMessage('FHIR validator: validator_cli.jar could not be downloaded!');
+                                        reject(false);
+                                    });
+                            });
+                        } else {
+                            vscode.window.showErrorMessage('FHIR validator: Expected 2nd redirect!' + response.statusCode);
+                            reject(false);
+                        }});
+                } else {
+                    vscode.window.showErrorMessage('FHIR validator: Expected redirect!' + response.statusCode);
                     reject(false);
-                });
-                
+                }
             });
         } catch (exception) {
             reject(false);

@@ -2,7 +2,7 @@
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
 	"description": "",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"publisher": "Yannick-Lagger",
 	"author": {
 		"name": "Yannick Lagger",
@@ -111,7 +111,7 @@
 		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.7.2",
+		"fhir": "^4.7.9",
 		"fhirpath": "^2.1.0"
 	}
 }
