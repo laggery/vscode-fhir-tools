@@ -111,7 +111,7 @@
 		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.7.9",
+		"fhir": "^4.8.0",
 		"fhirpath": "^2.1.0"
 	}
 }
