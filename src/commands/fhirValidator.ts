@@ -19,7 +19,7 @@ const validateResource = (context: vscode.ExtensionContext): vscode.Disposable =
                     terminal = vscode.window.createTerminal(`Resource validation`);
                 }
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} ${textEditor!.document.uri.fsPath} -version 4.0.1`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} "${textEditor!.document.uri.fsPath}" -version 4.0.1`);
             });
         }
     });
@@ -47,7 +47,7 @@ const validateResourceWithParams = (context: vscode.ExtensionContext): vscode.Di
                     terminal = vscode.window.createTerminal(`Resource validation`);
                 }
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} ${textEditor!.document.uri.fsPath} ${optionsInput}`);
+                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')} "${textEditor!.document.uri.fsPath}" ${optionsInput}`);
             });
         }
     });
