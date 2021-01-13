@@ -5,6 +5,12 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 
+## [1.4.1] - 2021-01-13
+
+### Fixed
+
+- Validate resource with a space in the file name
+
 ## [1.4.0] - 2020-07-28
 
 ### Fixed
