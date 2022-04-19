@@ -2,7 +2,7 @@
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
 	"description": "",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"publisher": "Yannick-Lagger",
 	"author": {
 		"name": "Yannick Lagger",
@@ -22,7 +22,9 @@
 	},
 	"activationEvents": [
 		"onCommand:extension.xmlToJson",
+		"onCommand:extension.xmlToJsonNewFile",
 		"onCommand:extension.jsonToXml",
+		"onCommand:extension.jsonToXmlNewFile",
 		"onCommand:extension.validateResource",
 		"onCommand:extension.validateResourceWithParams",
 		"onCommand:extension.fhirpathWebview",
@@ -37,8 +39,16 @@
 				"title": "FHIR xml to json"
 			},
 			{
+				"command": "extension.xmlToJsonNewFile",
+				"title": "FHIR xml to json (new file)"
+			},
+			{
 				"command": "extension.jsonToXml",
 				"title": "FHIR json to xml"
+			},
+			{
+				"command": "extension.jsonToXmlNewFile",
+				"title": "FHIR json to xml (new file)"
 			},
 			{
 				"command": "extension.validateResource",
@@ -69,24 +79,34 @@
 					"group": "FHIR@1"
 				},
 				{
-					"when": "resourceLangId == json",
-					"command": "extension.jsonToXml",
+					"when": "resourceLangId == xml",
+					"command": "extension.xmlToJsonNewFile",
 					"group": "FHIR@2"
 				},
 				{
-					"when": "resourceLangId == json || resourceLangId == xml",
-					"command": "extension.validateResource",
+					"when": "resourceLangId == json",
+					"command": "extension.jsonToXml",
 					"group": "FHIR@3"
 				},
 				{
-					"when": "resourceLangId == json || resourceLangId == xml",
-					"command": "extension.validateResourceWithParams",
+					"when": "resourceLangId == json",
+					"command": "extension.jsonToXmlNewFile",
 					"group": "FHIR@4"
 				},
 				{
 					"when": "resourceLangId == json || resourceLangId == xml",
-					"command": "extension.fhirpathWebview",
+					"command": "extension.validateResource",
 					"group": "FHIR@5"
+				},
+				{
+					"when": "resourceLangId == json || resourceLangId == xml",
+					"command": "extension.validateResourceWithParams",
+					"group": "FHIR@6"
+				},
+				{
+					"when": "resourceLangId == json || resourceLangId == xml",
+					"command": "extension.fhirpathWebview",
+					"group": "FHIR@7"
 				}
 			]
 		}
@@ -111,7 +131,8 @@
 		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.8.0",
-		"fhirpath": "^2.1.0"
+		"fhir": "^4.11.1",
+		"fhirpath": "^2.14.1",
+		"xml-formatter": "^2.6.1"
 	}
 }
