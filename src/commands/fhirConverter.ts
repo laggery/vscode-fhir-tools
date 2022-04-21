@@ -1,60 +1,91 @@
 import * as vscode from 'vscode';
 import * as fhirLib from 'fhir';
+import { existsSync } from 'fs';
+import format from 'xml-formatter';
 
 
 const xmlToJsonCmd = (context: vscode.ExtensionContext): vscode.Disposable => {
     return vscode.commands.registerCommand('extension.xmlToJson', () => {
-        let textEditor = vscode.window.activeTextEditor;
-        if (textEditor) {
-            if (textEditor.document.languageId !== "xml") {
-                vscode.window.showErrorMessage('Current tab is not a json file');
-                return;
-            }
-            let fhir = new (<any>fhirLib).Fhir();
-            let json = fhir.xmlToJson(textEditor.document.getText());
-    
-            renameFile(textEditor.document, 'json');
-            replaceText(textEditor.document, json);
-        }
-    
+        return convertXmlToJson(false);
     });
 };
+
+const xmlToJsonCmdNewFile = (context: vscode.ExtensionContext): vscode.Disposable => {
+    return vscode.commands.registerCommand('extension.xmlToJsonNewFile', () => {
+        return convertXmlToJson(true);
+    });
+};
+
+const convertXmlToJson = (newFile: boolean) => {
+    let textEditor = vscode.window.activeTextEditor;
+    if (!textEditor) {
+        return;
+    }
+
+    if (textEditor.document.languageId !== "xml") {
+        vscode.window.showErrorMessage('Current tab is not an XML file');
+        return;
+    }
+
+    let fhir = new (<any>fhirLib).Fhir();
+    let json = fhir.xmlToJson(textEditor.document.getText());
+    writeFileContent(textEditor.document, json, 'json', newFile);
+}
 
 const jsonToXmlCmd = (context: vscode.ExtensionContext): vscode.Disposable => {
     return vscode.commands.registerCommand('extension.jsonToXml', () => {
-        let textEditor = vscode.window.activeTextEditor;
-        if (textEditor) {
-            if (textEditor.document.languageId !== "json") {
-                vscode.window.showErrorMessage('Current tab is not a json file');
-                return;
-            }
-            let fhir = new (<any>fhirLib).Fhir();
-            let xml = fhir.jsonToXml(textEditor.document.getText());
-    
-            renameFile(textEditor.document, 'xml');
-            replaceText(textEditor.document, xml);
+        return convertJsonToXml(false);
+    });
+};
+
+const jsonToXmlCmdNewFile = (context: vscode.ExtensionContext): vscode.Disposable => {
+    return vscode.commands.registerCommand('extension.jsonToXmlNewFile', () => {
+        return convertJsonToXml(true);
+    });
+};
+
+const convertJsonToXml = (newFile: boolean) => {
+    let textEditor = vscode.window.activeTextEditor;
+    if (!textEditor) {
+        return;
+    }
+
+    if (textEditor.document.languageId !== "json") {
+        vscode.window.showErrorMessage('Current tab is not a json file');
+        return;
+    }
+
+    let fhir = new (<any>fhirLib).Fhir();
+    let xml = fhir.jsonToXml(textEditor.document.getText());
+    xml = format(xml)
+    writeFileContent(textEditor.document, xml, 'xml', newFile);
+}
+
+const writeFileContent = async(document: vscode.TextDocument, content: string, extension: string, newFile: boolean) => {
+    const newFileUri = vscode.Uri.file(`${document.uri.path.substring(0, document.uri.path.length - document.languageId.length)}${extension}`);
+    const fileExist = existsSync(newFileUri.fsPath);
+    if (fileExist) {
+        const answer = await vscode.window.showInformationMessage("File already exists. Do you want to override it?", "Yes", "No")
+        if (!answer || answer === "No") {
+            return;
         }
-    });
-};
+    }
 
-const replaceText = (document: vscode.TextDocument, value: string) => {
-    vscode.window.showTextDocument(document, 1, false).then(e => {
-        const document = e.document;
-        e.edit(edit => {
-            edit.replace(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(document.getText().length + 1, 0)), value);
-            vscode.window.showInformationMessage('Convert success!');
-        });
-    });
-};
+    if (!newFile) {
+        const we = new vscode.WorkspaceEdit();
+        we.renameFile(document.uri, newFileUri);
+        await vscode.workspace.applyEdit(we);
+    }
 
-const renameFile = (document: vscode.TextDocument, newExtension: string) => {
-    let we = new vscode.WorkspaceEdit();
-    const newUri = `${document.uri.path.substring(0, document.uri.path.length - document.languageId.length)}${newExtension}`;
-    we.renameFile(document.uri, vscode.Uri.file(newUri));
-    vscode.workspace.applyEdit(we);
-};
+    const writeData = Buffer.from(content, 'utf8');
+    await vscode.workspace.fs.writeFile(newFileUri, writeData);
+    vscode.window.showTextDocument(newFileUri);
+    vscode.window.showInformationMessage('Convert success!');
+}
 
 export {
     xmlToJsonCmd,
-    jsonToXmlCmd
+    xmlToJsonCmdNewFile,
+    jsonToXmlCmd,
+    jsonToXmlCmdNewFile
 };

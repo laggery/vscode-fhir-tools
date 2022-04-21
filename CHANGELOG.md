@@ -4,6 +4,16 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## [1.5.0] - 2022-04-21
+
+### Added
+
+- Convert "fhir" resource in new file
+
+### Changed
+
+- Updated "fhir" and "fhirpath" library
+- Prettify converted xml
 
 ## [1.4.1] - 2021-01-13
 
