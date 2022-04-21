@@ -1,3 +1,8 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=L6BMYCPYKNH7L&no_recurring=0&item_name=VSCode+Extension+-+FHIR+tools&currency_code=CHF)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/Yannick-Lagger.vscode-fhir-tools.svg)](https://marketplace.visualstudio.com/items?itemName=Yannick-Lagger.vscode-fhir-tools)
+
+Do you like this extension? Help me to make it better with a donation, click the first button.
+
 # vscode-fhir-tools
 
 Vscode-fhir-tools is an open-source extension for [Visual Studio Code](https://code.visualstudio.com) that implement some tools for the FHIR® standard created by Yannick Lagger. This project is not affiliated with, or approved or sponsored by, HL7.
@@ -88,3 +93,4 @@ Fhir-tools is released under the [Apache-2.0](https://opensource.org/licenses/Ap
 
 - npm fhirpath <https://github.com/HL7/fhirpath.js>
 - npm fhir <https://github.com/lantanagroup/FHIR.js>
+- npm xml-formatter <https://github.com/chrisbottin/xml-formatter>

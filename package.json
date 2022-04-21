@@ -1,7 +1,7 @@
 {
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
-	"description": "",
+	"description": "Various tools that simplify the work with FHIR resources",
 	"version": "1.5.0",
 	"publisher": "Yannick-Lagger",
 	"author": {
