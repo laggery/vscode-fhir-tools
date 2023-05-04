@@ -15,7 +15,7 @@ const runIGPublisher = (context: vscode.ExtensionContext): vscode.Disposable => 
                 terminal = vscode.window.createTerminal(`IGPublisher`);
             }
             terminal.show(true);
-            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'publisher.jar')} -ig ig.ini`);
+            terminal.sendText(`java -jar "${path.join(context.extensionPath, 'publisher.jar')}" -ig ig.ini`);
         });
     });
 };

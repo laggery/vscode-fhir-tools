@@ -16,11 +16,11 @@ const runUpdateJavaTooling = (context: vscode.ExtensionContext): vscode.Disposab
                 terminal = vscode.window.createTerminal(`Update Jar`);
             }
             terminal.show(true);
-            terminal.sendText(`java -jar ${path.join(context.extensionPath, 'publisher.jar')} --version`);
+            terminal.sendText(`java -jar "${path.join(context.extensionPath, 'publisher.jar')}" --version`);
         }).then(
             resp => deleteJar(context, 'validator_cli.jar').then(resp2 => val.downloadJar(context)).then(resp3 => {
                 terminal.show(true);
-                terminal.sendText(`java -jar ${path.join(context.extensionPath, 'validator_cli.jar')}`);
+                terminal.sendText(`java -jar "${path.join(context.extensionPath, 'validator_cli.jar')}"`);
             }));
     });
 };

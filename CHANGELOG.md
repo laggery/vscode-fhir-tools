@@ -4,6 +4,16 @@ All notable changes to the "vscode-fhir-tools" extension will be documented in t
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## [1.5.1] - 2023-05-04
+
+### Changed
+
+- Updated "fhir" and "fhirpath" library
+
+### Fixed
+
+- Validate resource with a space in the path
+
 ## [1.5.0] - 2022-04-21
 
 ### Added

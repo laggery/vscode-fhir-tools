@@ -2,7 +2,7 @@
 	"name": "vscode-fhir-tools",
 	"displayName": "FHIR tools",
 	"description": "Various tools that simplify the work with FHIR resources",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"publisher": "Yannick-Lagger",
 	"author": {
 		"name": "Yannick Lagger",
@@ -10,7 +10,7 @@
 		"url": "https://github.com/laggery"
 	},
 	"engines": {
-		"vscode": "^1.39.0"
+		"vscode": "^1.77.0"
 	},
 	"categories": [
 		"Other"
@@ -20,17 +20,7 @@
 		"type": "git",
 		"url": "https://github.com/laggery/vscode-fhir-tools.git"
 	},
-	"activationEvents": [
-		"onCommand:extension.xmlToJson",
-		"onCommand:extension.xmlToJsonNewFile",
-		"onCommand:extension.jsonToXml",
-		"onCommand:extension.jsonToXmlNewFile",
-		"onCommand:extension.validateResource",
-		"onCommand:extension.validateResourceWithParams",
-		"onCommand:extension.fhirpathWebview",
-		"onCommand:extension.runIGPublisher",
-		"onCommand:extension.runUpdateJavaTooling"
-	],
+	"activationEvents": [],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
@@ -120,19 +110,19 @@
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
+		"@types/mocha": "^10.0.1",
 		"@types/node": "^10.17.2",
-		"@types/vscode": "^1.39.0",
+		"@types/vscode": "^1.77.0",
 		"glob": "^7.1.4",
-		"grunt": "^1.1.0",
-		"mocha": "^6.2.2",
+		"grunt": "^1.6.1",
+		"mocha": "^10.2.0",
 		"tslint": "^5.20.0",
-		"typescript": "^3.6.4",
+		"typescript": "^4.8.0",
 		"vscode-test": "^1.2.1"
 	},
 	"dependencies": {
-		"fhir": "^4.11.1",
-		"fhirpath": "^2.14.1",
-		"xml-formatter": "^2.6.1"
+		"fhir": "^4.11.2",
+		"fhirpath": "^3.4.0",
+		"xml-formatter": "^3.3.2"
 	}
 }

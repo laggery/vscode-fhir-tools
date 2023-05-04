@@ -1,5 +1,4 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=L6BMYCPYKNH7L&no_recurring=0&item_name=VSCode+Extension+-+FHIR+tools&currency_code=CHF)
-[![Version](https://vsmarketplacebadge.apphb.com/version-short/Yannick-Lagger.vscode-fhir-tools.svg)](https://marketplace.visualstudio.com/items?itemName=Yannick-Lagger.vscode-fhir-tools)
 
 Do you like this extension? Help me to make it better with a donation, click the first button.
 
